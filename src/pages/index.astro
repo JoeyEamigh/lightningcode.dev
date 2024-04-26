@@ -1,0 +1,154 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Logo from '../assets/fullLogoLight.png';
+import { Image } from 'astro:assets';
+
+// images
+import spin from '../assets/espingg.png';
+import manufacturing from '../assets/manufacturing.png';
+import b4k from '../assets/b4k.png';
+import rntr from '../assets/rntr.png';
+import multivesta from '../assets/multivesta.png';
+import bridge from '../assets/bridge.png';
+import switchframe from '../assets/switchframe.png';
+import gymble from '../assets/gymble.jpg';
+import wayclip from '../assets/wayclip.jpg';
+import Card from '../components/Card.astro';
+
+const projects = [
+  {
+    title: 'Beds for Kids',
+    type: 'Web App',
+    description: `Beds for Kids (<a class="text-teal-500 hover:text-teal-600" href="https://bedsforkids.org" rel="noopener noreferrer" target="_blank">https://bedsforkids.org</a>)
+    is a 501(c)(3) non-profit organization that provides furniture for children in need.
+    LightningCode is currently working with B4K to streamline their inventory system as well as build out a web app to
+    help staff and social workers better serve the community. The site is built with NextJS, NestJS, Rust, and PostgreSQL.`,
+    year: '2024',
+    image: b4k,
+    alt: 'Screenshot of Beds for Kids Homepage',
+    eager: true,
+  },
+  {
+    title: 'Gymble',
+    type: 'Web App',
+    description: `Gymble (<a class="text-teal-500 hover:text-teal-600" href="https://gymble.us" rel="noopener noreferrer" target="_blank">https://gymble.us</a>)
+    is an all-in-one sports and fitness management platform that helps athletic trainers focus on what they do best instead
+    of back-office operations. LightningCode worked with Gymble to build out V2 of their platform, which
+    overhauls the UI and UX, bringing new features and implementing feedback from the Gymble V1 users.`,
+    year: '2023',
+    image: gymble,
+    alt: 'Screenshot of Gymble Login Page',
+    eager: true,
+  },
+  {
+    title: 'SwitchFrame',
+    type: 'Web App',
+    description: `LightingCode built a Web App for SwitchFrame to handle mass video editing for creative advertising agencies.
+    The SwitchFrame app was built with NextJS and Typescript, with an API in NestJS, and a PostgreSQL database
+    managed by the Prisma ORM. LightningCode scaled out a custom video editing backend capable of running hundreds of video edits in parallel on a custom backend in Rust. The app is currently in testing phases.`,
+    year: '2023',
+    image: switchframe,
+    alt: 'Screenshot of SwitchFrame Login Page',
+    eager: true,
+  },
+  {
+    title: 'Builders Bridge',
+    type: 'Web App',
+    description: `LightingCode built a Web App for Builders Bridge to handle their hundreds of applicants for internships.
+    The Builders Bridge internship app was built with NextJS and Typescript, with an API in NestJS, and a PostgreSQL database
+    managed by the Prisma ORM. The app handles complex data including resume upload, automatic Teams interview scheduling, legal
+    document signing with SignNow, and more.`,
+    year: '2022',
+    image: bridge,
+    alt: 'Screenshot of Builders Bridge Screen',
+  },
+  {
+    title: 'SPX FLOW eXpress',
+    type: 'Mobile App',
+    description: `LightningCode built a mobile app for the manufacturing company SPX FLOW. The app is written in React Native,
+    and interfaces with an API built on .NET. This application supports both iOS and Android devices, and uses
+    neural networks and machine learning to read serial numbers off of products to help service them.`,
+    year: '2021',
+    image: manufacturing,
+    alt: 'Two screenshots of app screens',
+  },
+  {
+    title: 'espin.gg',
+    type: 'Web App',
+    description: `Stay Plugged IN (<a class="text-teal-500 hover:text-teal-600" href="https://espin.gg" rel="noopener noreferrer" target="_blank">https://espin.gg</a>)
+    is a company that helps get highschoolers recruited to college
+    for Esports. LightningCode built out SPIN's entire infrastructure, including a website written in React, an API
+    written in Express, and MongoDB as a database. Their infrastructure is managed using Kubernetes. SPIN serves over
+    4,000 (2020) users with this website.`,
+    year: '2020',
+    image: spin,
+    alt: 'screenshot of espin.gg homepage in late 2020',
+  },
+  {
+    title: 'wayclip',
+    type: 'Open Source Native Application',
+    description: `wayclip is a clipboard manager for Wayland compositors. It is written in Rust and monitors the clipboard by interfacing with zwlr_data_control_manager_v1. This means it works on KWin and Sway. You can find the source code on
+    <a class="text-teal-500 hover:text-teal-600" href="https://github.com/JoeyEamigh/wayclip" rel="noopener noreferrer" target="_blank">Github</a>,
+    or install the library from <a class="text-teal-500 hover:text-teal-600" href="https://crates.io/crates/wayclip" rel="noopener noreferrer" target="_blank">crates.io</a>
+    and <a class="text-teal-500 hover:text-teal-600" href="https://aur.archlinux.org/packages/wayclip-manager-git" rel="noopener noreferrer" target="_blank">the AUR</a>.`,
+    year: '2023',
+    image: wayclip,
+    alt: 'screenshot of wayclip github',
+  },
+  {
+    title: 'react-native-text-recognition',
+    type: 'Open Source Library',
+    description: `react-native-text-recognition is an Open Source library built by LightningCode to bridge code between
+    React Native and Google MLKit. It is written in TypeScript, Java, and Swift and uses the Google API on-device to read
+    text from images. You can find the source code on
+    <a class="text-teal-500 hover:text-teal-600" href="https://github.com/JoeyEamigh/react-native-text-recognition" rel="noopener noreferrer" target="_blank">Github</a>,
+    or install the library from <a class="text-teal-500 hover:text-teal-600" href="https://www.npmjs.com/package/react-native-text-recognition" rel="noopener noreferrer" target="_blank">npm</a>.`,
+    year: '2021',
+    image: rntr,
+    alt: 'screenshot of rntr github',
+  },
+  {
+    title: 'multi-vesta',
+    type: 'Open Source Library',
+    description: `multi-vesta is an Open Source library built by LightningCode manage and synchronize multiple Vestaboards in either
+    a residential or commercial environment. This library is written in TypeScript, and significantly reduces the amount of boilerplate
+    code that is required to manage Vestaboards.
+    <a class="text-teal-500 hover:text-teal-600" href="https://github.com/JoeyEamigh/multi-vesta" rel="noopener noreferrer" target="_blank">Github</a>,
+    or install the library from <a class="text-teal-500 hover:text-teal-600" href="https://www.npmjs.com/package/multi-vesta" rel="noopener noreferrer" target="_blank">npm</a>.`,
+    year: '2022',
+    image: multivesta,
+    alt: 'screenshot of multi-vesta github',
+  },
+];
+---
+
+<Layout>
+  <main>
+    <section class="mx-auto max-w-3xl p-8">
+      <Image src={Logo} alt="LightningCode Logo" loading="eager" />
+    </section>
+    <section class="mx-auto grid max-w-7xl gap-5 px-8 lg:grid-cols-3">
+      {projects.map(p => <Card project={p} />)}
+    </section>
+    <section class="mt-16 flex w-full flex-col items-center bg-gray-700 p-4 text-gray-200">
+      <p>&copy; {new Date().getFullYear()} LightningCode</p>
+      <a
+        class="inline-flex items-center gap-2 text-teal-500 hover:text-teal-600"
+        href="mailto:joey@lightningcode.dev"
+        target="_blank"
+        rel="noopener noreferrer">
+        <!-- <MailIcon class="h-5 w-5" /> joey@lightningcode.dev -->
+        joey@lightningcode.dev
+      </a>
+      <a
+        class="text-teal-500 hover:text-teal-600"
+        href="https://github.com/JoeyEamigh"
+        target="_blank"
+        rel="noopener noreferrer">
+        https://github.com/JoeyEamigh
+      </a>
+    </section>
+  </main>
+</Layout>
+
+<style></style>

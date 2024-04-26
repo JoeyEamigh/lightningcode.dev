@@ -1,0 +1,59 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  imgUrl?: string;
+}
+
+const { title, description, imgUrl } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/ico" href="/favicon.ico" />
+    <meta name="description" content={description || 'LightningCode creates Web and Mobile Apps'} />
+    <title>{title ? `${title} | LightningCode` : `LightningCode`}</title>
+
+    {/* OpenGraph Tags */}
+    <meta property="og:url" content={`https://lightningcode.dev/`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title ? `${title} | LightningCode` : `LightningCode`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imgUrl} />
+
+    {/* Twitter Tags */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content={'lightningcode.dev'} />
+    <meta property="twitter:url" content={`https://lightningcode.dev/`} />
+    <meta name="twitter:title" content={title ? `${title} | LightningCode` : `LightningCode`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imgUrl} />
+
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+<style is:global>
+  html,
+  body {
+    @apply flex h-full flex-1 flex-col bg-gray-800;
+  }
+
+  img {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+  }
+</style>
